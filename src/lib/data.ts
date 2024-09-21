@@ -53,7 +53,6 @@ export const fetchCartProducts = async (): Promise<CartProduct[]> => {
     return mergedCart;
 
   } catch (error) {
-    const axiosError = error as AxiosError<ApiResponse>;
     return []
   }
 };
