@@ -3,7 +3,7 @@ import axios, { AxiosError } from "axios";
 
 export const fetchProducts = async () => {
   try {
-    const response = await axios.get<ApiResponse>(`${process.env.DOMAIN}/api/get-products`)
+    const response = await axios.get<ApiResponse>(`${process.env.NEXT_PUBLIC_DOMAIN}/api/get-products`)
 
     if (response.data.success) {
       return response.data
@@ -17,7 +17,7 @@ export const fetchProducts = async () => {
 
 export const fetchProduct = async (id: string) => {
   try {
-    const response = await axios.get<ApiResponse>(`${process.env.DOMAIN}/api/get-product?id=${id}`)
+    const response = await axios.get<ApiResponse>(`${process.env.NEXT_PUBLIC_DOMAIN}/api/get-product?id=${id}`)
 
     if (response.data.success) {
       return response.data
@@ -37,7 +37,7 @@ export const fetchCartProducts = async (): Promise<CartProduct[]> => {
 
   try {
     const productIds = localCartItems.map(item => item.productId);
-    const response = await axios.post<ApiResponse>(`${process.env.DOMAIN}/api/get-cart-products`, { productIds });
+    const response = await axios.post<ApiResponse>(`${process.env.NEXT_PUBLIC_DOMAIN}/api/get-cart-products`, { productIds });
 
     if (!response.data.success || !response.data.cartProducts) return [];
     const fetchedProducts: CartProduct[] = response.data.cartProducts;
